@@ -34,5 +34,5 @@ app.use("/", userRouter);
 app.use("/home", restrictFromSecureRoutes(["NORMAL", "ADMIN"]), homeRouter);
 
 server.listen(PORT, () => {
-  console.log(`Server running on : http://localhost:${PORT}`);
+  console.log(`Server Running on : http://localhost:${PORT}`);
 });

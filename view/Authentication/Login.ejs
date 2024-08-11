@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="w-[100%] min-h-[100vh] bg-green-200">
+      <div class="form max-w-[500px] mx-auto py-[100px]">
+        <% if(typeof message !== "undefined"){ %>
+        <p class="text-green-400 text-center"><%= message%></p>
+        <% } %>
+        <h1 class="text-3xl text-center">Login into your Account</h1>
+        <form
+          action=""
+          class="flex flex-col justify-center items-center"
+          method="post"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <input
+            type="text"
+            name="email"
+            placeholder="Enter your email"
+            class="px-[10px] py-[8px] w-[400px] bg-transparent border-[1px] border-gray-600 rounded-md my-[30px]"
+          />
+          <input
+            type="text"
+            name="password"
+            placeholder="Enter your password"
+            class="px-[10px] py-[8px] w-[400px] bg-transparent border-[1px] border-gray-600 rounded-md my-[30px]"
+          />
+          <button class="border-[1px] border-gray-400 rounded-md p-4">
+            Login Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

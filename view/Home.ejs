@@ -1,0 +1,85 @@
+<%- include("./layouts/header.ejs") %>
+
+<!-- Page Content  -->
+
+<div class="chat-container max-w-[100%] min-h-[100vh] mx-auto bg-gray-950 text-white">
+  <div class="grid grid-cols-[30%_auto]">
+    <!-- Left Sidbar Section -->
+    <div class="leftSideBar flex flex-col py-[20px] px-[20px] hidden sm:block">
+      <div class="cUser flex relative shadow shadow-red-400/60 my-[20px] rounded-lg">
+        <div class="flex px-[10px] py-[20px] justify-center items-center space-x-[20px]">
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt=""
+          class="w-5 sm:w-10 md:w-16 h-5 sm:h-10 sm:h-16 rounded-full"
+        />
+        <h1 class="font-semibold sm:font-bold text-sm sm:text-md md:text-xl">AIZAZ UL HAQ</h1>
+      </div>
+        <div class="absolute top-3 right-3 text-3xl rounded-full bg-green-400 p-2">
+        
+        </div>
+      </div>
+      <div class="usersList">
+        <ul
+          role="list"
+          class=""
+        >
+          <% people.forEach((user)=>{ %>
+          <li>
+            <div class="flex items-center gap-x-6 shadow shadow-gray-400/60 my-[10px] px-[10px] py-[15px] relative rounded-lg">
+              <img
+                class="h-16 w-16 rounded-full"
+                src=<%= user.imageUrl %>
+                alt=""
+              />
+              <div>
+                <h3
+                  class="text-base font-semibold leading-7 tracking-tight text-white"
+                >
+                  <%= user.name %>
+                </h3>
+                <p class="text-sm font-semibold leading-6 text-gray-600">
+                    <%= user.role %>
+                </p>
+              </div>
+              <div class="absolute top-3 right-3 text-3xl rounded-full bg-red-400 p-2"></div>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+    <!-- Right Section  -->
+    <div class="rightSection flex flex-col py-[20px] px-[20px]">
+      <div class="userDetail shadow shadow-gray-400/60 my-[20px] px-[20px] py-[10px] text-center font-bold rounded-lg">
+        <h1>Ihtisham Ul Haq</h1>
+      </div>
+      <div class="chatList shadow shadow-gray-400/60 px-[20px] py-[20px] min-h-[400px] rounded-md">
+        <% messages.forEach((msg)=>{ %>
+
+          <li class="list-none flex <% if (msg.isCurrent) { %> justify-end <% } else { %> justify-start <% } %>">
+            <div class="inline-block my-[4px] max-w-[70%] text-white px-[10px] pt-[3px] pb-[17px] rounded-md <% if (msg.isCurrent) { %> bg-green-700 <% } else { %> bg-gray-800 <% } %> relative">
+              <%= msg.msg %>
+              <p class="absolute bottom-1 right-2 text-[13px] opacity-80"><%= msg.timeStamp %></p>
+            </div>
+            
+          </li>
+          <% }) %>
+      </div>
+      <div class="chatSection shadow shadow-gray-400/60 mt-[20px] py-[5px] rounded-lg">
+        <form action="" class="flex justify-evenly items-center">
+          <div class="text-3xl">😊</div>
+          <textarea
+            placeholder="Type your message...."
+            class="text-white w-[700px] bg-gray-800 h-[40px] flex items-center px-3 py-2 rounded-lg"
+          ></textarea>
+          <button class="shadow shadow-white/60 px-[25px] py-[10px] rounded-lg hover:bg-gray-800">
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("./layouts/footer.ejs") %>

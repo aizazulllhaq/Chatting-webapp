@@ -70,7 +70,7 @@ homeRouter.get(
     const users = await User.find({ _id: { $ne: uid } });
 
     return res.status(200).render("Home", {
-      name: user.name,
+      user: user,
       users: users,
       people: people,
       messages: messages,

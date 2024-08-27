@@ -9,27 +9,28 @@
       <div class="cUser flex relative shadow shadow-red-400/60 my-[20px] rounded-lg">
         <div class="flex px-[10px] py-[20px] justify-center items-center space-x-[20px]">
         <img
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src="<%= user.profileImg %>"
           alt=""
           class="w-5 sm:w-10 md:w-16 h-5 sm:h-10 sm:h-16 rounded-full"
         />
-        <h1 class="font-semibold sm:font-bold text-sm sm:text-md md:text-xl">AIZAZ UL HAQ</h1>
+        <h1 class="font-semibold sm:font-bold text-sm sm:text-md md:text-xl"><%= user.name %></h1>
       </div>
-        <div class="absolute top-3 right-3 text-3xl rounded-full bg-green-400 p-2">
+        <div class="absolute top-3 right-3 text-3xl rounded-full bg-<%= user.isOnline ? "green-500" : "red-500" %> p-2">
         
         </div>
       </div>
       <div class="usersList">
         <ul
           role="list"
-          class=""
+          class="max-h-[calc(4*105px)] overflow-y-scroll"
+          style="scrollbar-width: none; -ms-overflow-style: none;" 
         >
-          <% people.forEach((user)=>{ %>
-          <li>
+          <% users.forEach((user)=>{ %>
+          <li class="hover:bg-gray-900/90 cursor-pointer  ">
             <div class="flex items-center gap-x-6 shadow shadow-gray-400/60 my-[10px] px-[10px] py-[15px] relative rounded-lg">
               <img
                 class="h-16 w-16 rounded-full"
-                src=<%= user.imageUrl %>
+                src=<%= user.profileImg %>
                 alt=""
               />
               <div>
@@ -42,7 +43,7 @@
                     <%= user.role %>
                 </p>
               </div>
-              <div class="absolute top-3 right-3 text-3xl rounded-full bg-red-400 p-2"></div>
+              <div class="absolute top-3 right-3 text-3xl rounded-full bg-<%= user.isOnline ? "green-500" : "red-500" %> p-2"></div>
             </div>
           </li>
           <% }) %>
